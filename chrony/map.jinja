@@ -1,0 +1,36 @@
+
+{% set client = salt['grains.filter_by']({
+    'Arch': {
+        'service': 'chrony',
+        'mode7': False,
+    },
+    'Debian': {
+        'service': 'chrony',
+        'mode7': False,
+    },
+    'RedHat': {
+        'service': 'chrony',
+        'mode7': False,
+    },
+}, merge=salt['pillar.get']('chrony:client')) %}
+
+{% set server = salt['grains.filter_by']({
+    'Arch': {
+        'service': 'chrony',
+        'bind': {
+            'address': '0.0.0.0',
+        }
+    },
+    'Debian': {
+        'service': 'chrony',
+        'bind': {
+            'address': '0.0.0.0',
+        }
+    },
+    'RedHat': {
+        'service': 'chrony',
+        'bind': {
+            'address': '0.0.0.0',
+        }
+    },
+}, merge=salt['pillar.get']('chrony:server')) %}
