@@ -1,4 +1,5 @@
 {% from "chrony/map.jinja" import client with context %}
+{% from "chrony/map.jinja" import server with context %}
 
 {%- if server.enabled %}
 
