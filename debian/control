@@ -10,6 +10,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-chrony.git
 
 Package: salt-formula-chrony
 Architecture: all
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, salt-master, reclass
 Description: chrony salt formula
  Install and configure chrony system.

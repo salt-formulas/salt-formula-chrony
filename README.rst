@@ -1,9 +1,52 @@
-
 ==================================
 chrony
 ==================================
 
-WIP
+Network time synchronisation services.
+More info: https://chrony.tuxfamily.org/
+
+Sample pillars
+==============
+
+Chrony client
+------------
+Sample pillar
+
+
+
+.. code-block:: yaml
+
+  chrony:
+    client:
+      enabled: true
+      strata:
+      - ntp.cesnet.cz prefer
+      driftfile: /var/lib/chrony/drift
+      keyfile: etc/chrony.keys
+      commandkey: 1
+      logchange: 0.5
+      logdir: /var/log/chrony
+      dumponexit: true
+      dumpdir: /var/lib/chrony
+      rtconutc: true
+      local:  stratum 10
+      maxupdateskew: 100.0
+      log:
+        - tracking
+        - measurements
+        - statistics
+
+Chrony server
+------------
+.. code-block:: yaml
+
+  chrony:
+    server:
+      enabled: true
+      bind:
+        address: 0.0.0.0
+
+
 
 Documentation and Bugs
 ======================

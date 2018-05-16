@@ -3,12 +3,22 @@ applications:
 classes:
   - service.chrony.support
 parameters:
-  _param:
-    ntp_strata_host1: ntp.cesnet.cz
-    ntp_strata_host2: pool.ntp.org
-  ntp:
+  chrony:
     client:
       enabled: true
       strata:
-      - ${_param:ntp_strata_host1}
-      - ${_param:ntp_strata_host2}
+      - ntp.cesnet.cz prefer
+      driftfile: /var/lib/chrony/drift
+      keyfile: etc/chrony.keys
+      commandkey: 1
+      logchange: 0.5
+      logdir: /var/log/chrony
+      dumponexit: true
+      dumpdir: /var/lib/chrony
+      rtconutc: true
+      local:  stratum 10
+      maxupdateskew: 100.0
+      log:
+        - tracking
+        - measurements
+        - statistics
