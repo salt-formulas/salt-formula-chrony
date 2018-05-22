@@ -16,7 +16,7 @@ chrony_packages:
 chrony_service:
   service.running:
   - enable: true
-  - name: {{ client.service }}
+  - name: chronyd
   - watch:
     - file: /etc/chrony/chrony.conf
 

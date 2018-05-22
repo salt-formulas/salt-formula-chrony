@@ -6,7 +6,7 @@ chrony_packages:
   pkg.installed:
   - name: chrony
 
-/etc/chrony/chrony.conf:
+/etc/chrony.conf:
   file.managed:
   - source: salt://chrony/files/chrony.conf
   - template: jinja
@@ -16,8 +16,8 @@ chrony_packages:
 chrony_service:
   service.running:
   - enable: true
-  - name: {{ client.service }}
+  - name: chronyd
   - watch:
-    - file: /etc/chrony/chrony.conf
+    - file: /etc/chrony.conf
 
 {%- endif %}
